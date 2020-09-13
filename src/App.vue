@@ -1,12 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+   <app-header/>
     <router-view />
   </div>
 </template>
+
+<script>
+import AppHeader from  "@/components/AppHeader.vue";
+export default {
+  name:"App",
+  components:{
+    AppHeader
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -19,7 +26,11 @@
 
 #nav {
   padding: 30px;
-
+  float: left;
+ 
+   .left{
+margin-left: 1299px;
+   }
   a {
     font-weight: bold;
     color: #2c3e50;
