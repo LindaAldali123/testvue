@@ -1,30 +1,41 @@
 <template>
   <div class="row header">
     <ul>
-      <router-link to="/" tag="li" exact>
-        <a>Shoping List</a>
+      <router-link to="/recipes" tag="li" exact>
+        <a>Recipes</a>
       </router-link>
       <router-link to="/about" tag="li">
-        <a>Recipes</a>
+        <a>Shoping List</a>
       </router-link>
       <router-link class="left" to="/login" tag="li" replace>
         <a>Logout</a>
       </router-link>
-   <!-- <div>
-  <b-dropdown id="dropdown-offset" offset="25" text="Offset Dropdown" class="m-2">
-    <b-dropdown-item href="#">Action</b-dropdown-item>
-    <b-dropdown-item href="#">Another action</b-dropdown-item>
-    <b-dropdown-item href="#">Something else here</b-dropdown-item>
-  </b-dropdown>
-</div> -->
-
     </ul>
+    <Dropdown class="drop" title="Manage" :items="Manage" />
   </div>
 </template>
 <script>
+import Dropdown from "./Dropdown";
 export default {
-  name: "AppHeader"
-};
+  name: "AppHeader",
+  components: {
+    Dropdown
+  },
+  data() {
+    return {
+      Manage: [
+        {
+          title: "Fetch Data",
+          link: "#"
+        },
+        {
+          title: "Save Data",
+          link: "#"
+        }
+      ]
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .header {
@@ -47,5 +58,9 @@ export default {
   .header ul .left {
     margin-left: 120px !important;
   }
+}
+
+.header .drop {
+  margin-top: 20px !important;
 }
 </style>

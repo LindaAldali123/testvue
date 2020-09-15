@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-   <app-header/>
+    <app-header />
     <router-view />
   </div>
 </template>
 
 <script>
-import AppHeader from  "@/components/AppHeader.vue";
+import AppHeader from "@/components/AppHeader.vue";
 export default {
-  name:"App",
-  components:{
+  name: "App",
+  components: {
     AppHeader
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -27,10 +27,10 @@ export default {
 #nav {
   padding: 30px;
   float: left;
- 
-   .left{
-margin-left: 1299px;
-   }
+
+  .left {
+    margin-left: 1299px;
+  }
   a {
     font-weight: bold;
     color: #2c3e50;
