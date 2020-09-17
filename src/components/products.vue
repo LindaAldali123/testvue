@@ -29,7 +29,8 @@
             class="drop"
             title="Manage Recipe"
             :items="Manage"
-          />
+          />  <button @click.prevent="edit = !edit">Edit Recipe</button>
+          <button @click.stop="del(index1)" style="margin:3px">Delete Recipe</button>
           <h4 style="margin-right:360px">{{product.description}}</h4>
           <h6 class="col-md-6" style="margin-right:360px">{{product.tit}} ({{product.nu1}})</h6>
           <h6 class="col-md-6" style="margin-right:360px">{{product.tit2}} ({{product.nu2}})</h6>
@@ -39,14 +40,14 @@
       <transition class="trans" name="fade" appear>
         <div
           class="info2"
-          @click.stop="Manage.edit "
-          v-if="product.klic && !Manage.edit"
+         @click.stop="edit"
+          v-if="product.klic && edit"
           style="margin-left:700px;border:1px solid #DDD "
           v-bind:key="product.id"
         >
           <button style="background-color:green">Save</button>
           <button style="background-color:red; margin:8px">Cancel</button>
-          <button style="background-color:blue" @click.prevent="del">Clear</button>
+          <button style="background-color:blue" @click.stop="del(index1)">Clear</button>
           <br />Name :
           <input
             type="product"
@@ -98,19 +99,19 @@
             />
             <form action="">
             <div class="lis  row" v-for="(ou ) in outp" v-bind:key="ou.done" >
-       <h5  style="border:1px solid black;margin-left:100px;width:200px">   {{ou.wor}}       </h5>     <h5  style="border:1px solid black;width:190px">   {{ou.wow}}
+       <h5  style="border:1px solid black;margin-left:85px;width:200px">   {{ou.wor}}       </h5>     <h5  style="border:1px solid black;width:190px">   {{ou.wow}}
        </h5>
-      
+      <button @click.stop="delet(index)" style="height:25px !important">delete</button>
    </div>
              <input
               type="product"
               v-model="inpu1"
-              style="width:200px; height:30px; margin-bottom:10px"
+              style="width:165px; height:30px; margin-bottom:10px"
             />
              <input
               type="product"
               v-model="inpu2"
-              style="width:200px; height:30px; margin-bottom:10px"
+              style="width:165px; height:30px; margin-bottom:10px"
             />
             <div class="row" style="margin-left:60px;margin:8px">
             <button style="background-color:green" @click.prevent="Add" :disabled="!inpu1 && !inpu2 ">Add Ingradian</button>
@@ -229,8 +230,7 @@ export default {
         },
         {
           title: "Edit Recipe",
-          link: "#",
-          edit: true
+          link: "#"
         },
         {
           title: "Delete Recipe",
@@ -249,21 +249,21 @@ export default {
         inpu2:" ",
       outp:[
 
-      ]
+      ],
+      edit:false
     }
   },methods:{
-    del(){
- this.emp.inp1=" ";
- this.emp.inp2=" ";
-this.emp.inp3=" ";
-this.emp.inp4=" ";
-this.emp.inp5=" ";
+    del(index1){
+ this.products.splice(index1,1);
  
     },
   Add(){
 this.outp.push({ wor:this.inpu1, wow:this.inpu2,done: false });
       this.inpu1 = "";
       this.inpu2 = "";
+  },
+  delet(index){
+this.outp.splice(index,1);
   }
   }
 };
