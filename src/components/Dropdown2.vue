@@ -5,7 +5,7 @@
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
         <div v-for="(item,i) in items" :key="i" class="menu-item">
-          <a :href="item.link"  @click.prevent="Manage.edit = !Manage.link">{{item.title}}</a>
+          <a :href="item.link">{{item.title}}</a>
         </div>
       </div>
     </transition>
