@@ -38,6 +38,7 @@ export default {
   height: 60px;
 }
 .home .row h1 {
+  margin-bottom: 60px;
   text-align: center;
   margin-left: 380px;
   margin-top: 75px;

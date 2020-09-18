@@ -19,7 +19,7 @@
           class="info"
           @click.stop="product.klic"
           v-if="product.klic"
-          style="margin-left:700px;border:1px solid #DDD "
+          style="margin-left:700px;border:1px solid #DDD;margin-top:-140px "
           v-bind:key="product.id"
         >
           <img v-bind:src="product.img" />
@@ -45,8 +45,8 @@
           style="margin-left:700px;border:1px solid #DDD "
           v-bind:key="product.id"
         >
-          <button style="background-color:green">Save</button>
-          <button style="background-color:red; margin:8px">Cancel</button>
+          <button style="background-color:green" @click.stop="save">Save</button>
+          <button style="background-color:red; margin:8px" @click.prevent="edit = !edit">Cancel</button>
           <button style="background-color:blue" @click.stop="del(index1)">Clear</button>
           <br />Name :
           <input
@@ -250,7 +250,7 @@ export default {
       outp:[
 
       ],
-      edit:false
+      edit:false,
     }
   },methods:{
     del(index1){
@@ -264,6 +264,8 @@ this.outp.push({ wor:this.inpu1, wow:this.inpu2,done: false });
   },
   delet(index){
 this.outp.splice(index,1);
+  },save(){
+    this.products.push({title:this.product.title,description:this.product.description,img:this.product.img,tit:this.product.tit,tit2:this.product.tit2,nu1:this.product.nu1,nu2:this.product.nu2,klic:false})
   }
   }
 };
